@@ -1,0 +1,94 @@
+
+media:
+  input: public/images
+  output: /images
+  rename: true
+
+content:
+  - name: blog
+    label: Blog Posts
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Excerpt
+        type: text
+      - name: pubDate
+        label: Publish Date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: author
+        label: Author
+        type: string
+      - name: featuredImage
+        label: Featured Image
+        type: image
+      - name: body
+        label: Article Content
+        type: rich-text
+
+  - name: webinars
+    label: Webinars
+    type: collection
+    path: src/content/webinars
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: Webinar Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: eventDate
+        label: Webinar Date
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm"
+      - name: speaker
+        label: Speaker
+        type: string
+      - name: registrationUrl
+        label: Registration URL
+        type: string
+      - name: featuredImage
+        label: Featured Image
+        type: image
+      - name: body
+        label: Webinar Details
+        type: rich-text
+
+  - name: news
+    label: News
+    type: collection
+    path: src/content/news
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: Headline
+        type: string
+        required: true
+      - name: description
+        label: Summary
+        type: text
+      - name: pubDate
+        label: Publish Date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: featuredImage
+        label: Featured Image
+        type: image
+      - name: body
+        label: Article Content
+        type: rich-text
