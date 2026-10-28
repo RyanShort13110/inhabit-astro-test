@@ -1,0 +1,61 @@
+---
+import Hero from "../components/Hero.astro";
+---
+
+<Hero
+  title="Welcome to Inhabit"
+  description="Our new Astro website."
+/>
+
+
+---
+import PublishingLayout from "../layouts/PublishingLayout.astro";
+---
+
+<PublishingLayout title="Inhabit Astro Demo">
+  <main class="homepage">
+    <section class="hero">
+      <span class="eyebrow">OUR NEW PLATFORM</span>
+
+      <h1>Welcome to our new website.</h1>
+
+      <p>
+        Built with Astro. Managed with Pages CMS.
+        Powered by GitHub.
+      </p>
+
+      <a href="/blog/">Explore our blog →</a>
+    </section>
+  </main>
+</PublishingLayout>
+
+<style>
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 8%;
+    background: #080d19;
+    color: white;
+  }
+
+  .eyebrow {
+    color: #4be7ff;
+    letter-spacing: 0.15em;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    max-width: 850px;
+  }
+
+  p {
+    color: #b8c7da;
+    font-size: 1.2rem;
+  }
+
+  a {
+    color: #4be7ff;
+  }
+</style>
