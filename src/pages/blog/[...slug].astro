@@ -1,0 +1,33 @@
+---
+import PublishingLayout from '../../layouts/PublishingLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.pubDate;
+const formatDate = (value: Date) => value.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+---
+<PublishingLayout title={post.data.title} description={post.data.description || post.data.title}>
+  <div class="wrap article">
+    <a href="/blog/" class="back">← All blog posts</a>
+    <article>
+      <header>
+        <span class="eyebrow">Blog / Article</span>
+        <h1>{post.data.title}</h1>
+        {post.data.description && <p class="lede">{post.data.description}</p>}
+        <p class="muted">
+          {date && <time datetime={date.toISOString()}>{formatDate(date)}</time>}
+          {date && post.data.author && ' · '}
+          {post.data.author}
+        </p>
+      </header>
+      {post.data.featuredImage && <img src={post.data.featuredImage} alt="" class="article-cover" />}
+      <div class="article-body"><Content /></div>
+    </article>
+  </div>
+</PublishingLayout>

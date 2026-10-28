@@ -1,0 +1,14 @@
+---
+import PublishingLayout from '../layouts/PublishingLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = await getCollection('blog');
+---
+<PublishingLayout title="Publishing Workflow Proof of Concept">
+  <section class="wrap">
+    <span class="eyebrow">Inhabit development experiment</span>
+    <h1>Astro meets<br />Pages CMS<span style="color:#53d9f8">.</span></h1>
+    <p class="lede">The layout is maintained by developers. The content is written by marketing in Pages CMS, committed to GitHub, and converted into static pages by Astro.</p>
+    <p class="muted">Blog posts detected: <strong>{posts.length}</strong></p>
+    <a href="/blog/" class="button">Browse blog posts →</a>
+  </section>
+</PublishingLayout>
